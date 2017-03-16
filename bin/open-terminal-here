@@ -8,7 +8,7 @@ CWD=''
 
 # Check if the focused window is spacefm or gedit, because they have
 # internal functions to accomplish this better
-if (xprop WM_CLASS -id "$(pfw)" | grep -e spacefm -e gedit -e pcmanfm -e dolphin -e thunar -q) ; then
+if (xprop WM_CLASS -id "$(pfw)" | grep -e spacefm -e gedit -e pcmanfm -e dolphin -q) ; then
 	# release all modifier keys so that they don't interfere with the key sent
 	grep '^#define' /usr/include/X11/keysymdef.h | sed -r 's/^#define XK_(\S*?).*$/\1/;' | grep -E '_(L|R|Level.*)$' | xargs xdotool keyup
 	# send hotkey to open terminal in working directory
